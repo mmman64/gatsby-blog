@@ -13,10 +13,15 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@mdx-js/mdx": "^1.5.8",
+    "@mdx-js/react": "^1.5.8",
     "gatsby": "^2.19.7",
     "gatsby-plugin-emotion": "^4.2.1",
+    "gatsby-plugin-mdx": "^1.1.7",
+    "gatsby-plugin-react-helmet": "^3.2.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.0.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.0",
