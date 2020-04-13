@@ -15,6 +15,11 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.jsx'),
         },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+          },
+        ],
       },
     },
     {
@@ -29,6 +34,22 @@ module.exports = {
       options: {
         name: 'images',
         path: 'images',
+      },
+    },
+    {
+      resolve: 'gatsby-source-instagram',
+      options: {
+        username: 'zmfheadphones',
+      },
+    },
+    // run only on prod bundle and only when env variable is true
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+      options: {
+        production: true,
+        disable: !process.env.ANALYZE_BUNDLE_SIZE,
+        generateStatsFile: true,
+        analyzerMode: 'static',
       },
     },
   ],
