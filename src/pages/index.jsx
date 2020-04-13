@@ -1,10 +1,20 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import Layout from "../components/layout";
+import React, { Fragment } from 'react';
+import Layout from '../components/layout';
+import PostPreview from '../components/post-preview';
+import Hero from '../components/hero';
+import usePosts from '../hooks/use-posts';
 
-export default () => (
-  <Layout>
-    <h1>Home</h1>
-    <Link to="/about/">Who am I?</Link>
-  </Layout>
-);
+export default () => {
+  const posts = usePosts();
+  return (
+    <Fragment>
+      <Hero />
+      <Layout>
+        <h2>Blog Posts</h2>
+        {posts.map(post => (
+          <PostPreview key={post.slug} post={post} />
+        ))}
+      </Layout>
+    </Fragment>
+  );
+};
