@@ -6,7 +6,7 @@ export default () => (
   <Layout>
     <h1>About Me</h1>
     <p>
-      I'm Marco, an Irish Italian <strike>Stallion</strike> developer from
+      I'm Marco, an Irish Italian developer from
       London!
     </p>
     <p>Into Ruby, JavaScript, Cloud, high-end headphones.</p>
