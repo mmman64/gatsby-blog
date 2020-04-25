@@ -9,7 +9,6 @@ export default () => {
   const posts = usePosts();
   return (
     <Fragment>
-      <Hero />
       <Layout>
         <h2>Blog Posts</h2>
         {posts.map(post => (

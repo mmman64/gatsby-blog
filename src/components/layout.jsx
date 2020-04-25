@@ -3,6 +3,7 @@ import { Global, css } from '@emotion/core';
 import { Helmet } from 'react-helmet';
 import Header from './header';
 import useSiteMetaData from '../hooks/use-sitemetadata';
+import "typeface-open-sans";
 
 const Layout = ({ children }) => {
   const { title, description } = useSiteMetaData();
@@ -23,8 +24,9 @@ const Layout = ({ children }) => {
           html,
           body {
             margin: 0;
-            color: red;
-            font-family: 'Roboto', sans-serif;
+            color: #27241D;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
             font-size: 18px;
             line-height: 1.4;
 
@@ -46,6 +48,11 @@ const Layout = ({ children }) => {
             + * {
               margin-top: 0.5rem;
             }
+          }
+
+          h1 {
+            font-size: 48px;
+            font-weight: 300;
           }
 
           strong {

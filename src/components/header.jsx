@@ -5,8 +5,8 @@ import { Link } from 'gatsby';
 
 // styled component
 const NavLink = styled(Link)`
-  color: #222;
-  font-size: 1rem;
+  color: #F5F5F1;
+  font-size: 1.5rem;
   font-weight: ${props => props.fontWeight || 'normal'};
   line-height: 1;
   margin: 0 0.5rem 0 0;
@@ -22,24 +22,28 @@ const NavLink = styled(Link)`
   }
 `;
 
+const HeroTitle = styled('div')`
+  font-family: 'Kaushan script', cursive;
+`;
+
 const Header = () => (
   <header
     css={css`
-      background: #eee;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: space-between;
+      background: #bc0101;
+      height: 20vh;
       padding: 0.5rem calc((100vw - 550px -0.5rem) / 2);
     `}
   >
-    <NavLink to="/" fontWeight="bold">
-      Marco McNulty
-    </NavLink>
     <nav
       css={css`
-        margin-top: 0;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0;
       `}
     >
+      <NavLink to="/">
+        Marco McNulty
+      </NavLink>
       <NavLink to="/" activeClassName="current-page">
         Home
       </NavLink>
@@ -47,6 +51,18 @@ const Header = () => (
         About
       </NavLink>
     </nav>
+
+  <HeroTitle>
+    <h1
+      css={css`
+      color: #F5F5F1;
+      text-align: center;
+      font-size: 5rem;
+      padding-top: 30px;
+      `}
+      >Welcome!</h1>
+  </HeroTitle>
+
   </header>
 );
 
