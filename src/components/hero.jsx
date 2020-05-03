@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 
@@ -13,49 +14,26 @@ import BackgroundImage from 'gatsby-background-image';
 //   }
 // `;
 
-const TextBox = styled('div')`
-  height: 100%;
-  padding: 0 calc((100vw - 550px) / 2) 2rem;
-  width: 100%;
-
-  h1 {
-    font-size: 4rem;
-  }
-
-  p,
-  a {
-    color: #222;
-    margin-top: 0;
-  }
-
-  a {
-    margin-top: 0.5rem;
-  }
-`;
-
 // graphQL fragment with webp calculated behind the scenes
 // the fragment destructures everything available within fluid
 // *** gatsby determines whether the browser can support webp for you ***
-const Hero = () => {
-  // const { image } = useStaticQuery(graphql`
-  //   query {
-  //     image: file(relativePath: { eq: "davisco-blue-orange.jpg" }) {
-  //       sharp: childImageSharp {
-  //         fluid(maxWidth: 1000, quality: 100) {
-  //           ...GatsbyImageSharpFluid_withWebp
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-  return (
-    // <ImageBackground tag="section" fluid={image.sharp.fluid}>
-    // </ImageBackground>
-    <TextBox>
-      <h1>Marco McNulty</h1>
-      <p>Tech and miscellaneous ramblings</p>
-    </TextBox>
-  );
-};
+
+const Hero = (props) => (
+  <section>
+  {console.log(props)}
+    <h1
+      css={css`
+        text-align: center;
+        border: 1.1rem solid #ff729f;
+        border-radius: 8.33rem;
+        padding: 1.1rem 1.5rem;
+        display: ${props => (props.spaced ? 'flex' : 'block')};
+        justify-content: ${props => (props.spaced ? 'justify-between' : null)};
+        `}
+        >
+      {props.text}
+    </h1>
+  </section>
+);
 
 export default Hero;

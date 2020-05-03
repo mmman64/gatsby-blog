@@ -8,20 +8,18 @@ module.exports = {
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+
+    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.jsx'),
         },
-        gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-images',
-          },
-        ],
-      },
-    },
+    }
+  },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -34,12 +32,6 @@ module.exports = {
       options: {
         name: 'images',
         path: 'images',
-      },
-    },
-    {
-      resolve: 'gatsby-source-instagram',
-      options: {
-        username: 'zmfheadphones',
       },
     },
     // run only on prod bundle and only when env variable is true

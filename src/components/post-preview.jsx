@@ -1,20 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
-import Image from 'gatsby-image';
-import ReadLink from './read-link';
+import ArticleMeta from './articleMeta';
 
 const PostPreview = ({ post }) => (
-  <article
+  <Fragment>
+      <article
     css={css`
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      margin-top: 0;
-      padding-bottom: 1rem;
-
-      :first-of-type {
-        margin-top: 1rem;
-      }
+      margin: 2.8rem 0 1.5rem 0;
     `}
   >
     <Link
@@ -23,25 +16,29 @@ const PostPreview = ({ post }) => (
         margin: 1rem 1rem 0 0;
         width: 100px;
       `}
-    >
-      <Image
-        fluid={post.image.sharp.fluid}
-        css={css`
-          * {
-            margin-top: 0;
-          }
-        `}
-        alt={post.imageAlt}
-      />
-    </Link>
+    ></Link>
     <div>
-      <h3>
+      <h3
+        css={css`
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+        `}
+      >
         <Link to={post.slug}>{post.title}</Link>
       </h3>
-      <p>{post.excerpt}</p>
-      <ReadLink to={post.slug}>Read this post &rarr;</ReadLink>
+      <p
+        css={css`
+          text-align: justify;
+          margin: 1.4rem 0;
+        `}
+      >
+        {post.excerpt}
+      </p>
+      <ArticleMeta datetime={post.dateime} articleTags={post.articleTags} />
     </div>
   </article>
+  <hr />
+  </Fragment>
 );
 
 export default PostPreview;
