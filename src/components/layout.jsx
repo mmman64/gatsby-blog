@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
+import 'normalize.css';
 import { Global, css } from '@emotion/core';
 import { Helmet } from 'react-helmet';
 import Header from './header';
+import Footer from './footer';
 import useSiteMetaData from '../hooks/use-sitemetadata';
-import "typeface-open-sans";
+import 'typeface-open-sans';
 
 const Layout = ({ children }) => {
   const { title, description } = useSiteMetaData();
@@ -12,55 +14,89 @@ const Layout = ({ children }) => {
     <Fragment>
       <Global
         styles={css`
-          * {
-            box-sizing: border-box;
+          *,
+          *:before,
+          *:after {
             margin: 0;
-          }
-
-          * + * {
-            margin-top: 1rem;
+            padding: 0;
+            box-sizing: inherit;
           }
 
           html,
           body {
-            margin: 0;
-            color: #27241D;
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 400;
+            color: #353b48;
+            font-family: 'Lato', 'Arial', sans-serif;
             font-size: 18px;
-            line-height: 1.4;
-
-            /* remove margin for the div Gatsby mounts into */
-            > div {
-              margin-top: 0;
-            }
+            font-weight: 300;
+            text-rendering: optimizeLegibility;
+            box-sizing: border-box;
+            height: 100%;
+            overflow-x: hidden;
+            background-color: #ffffff;
           }
 
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6 {
-            color: #222;
-            line-height: 1.1;
+          body {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%235e5e60' fill-opacity='0.18' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+          }
 
-            + * {
-              margin-top: 0.5rem;
-            }
+          .site {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+          }
+
+          .siteContent {
+            flex: 1;
+            margin: 9rem auto 0 auto;
+            padding: 0 2rem;
+            max-width: 55.55rem;
+          }
+
+          section {
+            margin-top: 5rem;
           }
 
           h1 {
-            font-size: 48px;
+            font-size: 4rem;
             font-weight: 300;
           }
 
-          strong {
-            color: #222;
+          h2 {
+            font-size: 3rem;
+            font-weight: 400;
+            display: inline-block;
+            width: auto;
+            border-bottom: 5px solid #ff729f;
+            background-color: #fbc532;
+            border-radius: 5px;
+            padding: 0 1rem;
           }
 
-          li {
-            margin-top: 0.25rem;
+          h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+          }
+
+          p {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin: 1.75rem 0;
+            line-height: 1.75rem;
+          }
+
+          a {
+            text-decoration: none;
+            color: inherit;
+          }
+
+          .blanched-emoji {
+            color: transparent;
+            text-shadow: 0 0 #FFF;
+          }
+
+          .medium-emoji {
+            font-size: 1.75rem;
           }
         `}
       />
@@ -70,15 +106,12 @@ const Layout = ({ children }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <Header />
-      <main
-        css={css`
-          margin: 2rem auto;
-          max-width: 550px;
-        `}
-      >
-        {children}
-      </main>
+
+      <div className="site">
+        <Header />
+        <main className="siteContent">{children}</main>
+        <Footer />
+      </div>
     </Fragment>
   );
 };

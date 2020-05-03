@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import Layout from '../components/layout';
-import ReadLink from '../components/read-link';
 
 export const query = graphql`
   query($slug: String!) {
@@ -27,7 +26,6 @@ const PostTemplate = ({ data: { mdx: post } }) => (
       `}
     >Posted by {post.frontmatter.author}</p>
     <MDXRenderer>{post.body}</MDXRenderer>
-    <ReadLink to="/">&larr; Back to all posts</ReadLink>
   </Layout>
 );
 

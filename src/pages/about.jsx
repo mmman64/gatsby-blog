@@ -1,55 +1,140 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Layout from '../components/layout';
+import Hero from '../components/hero';
+import { interestEmojis } from '../components/interestEmojis';
+import Image from 'gatsby-image';
 
-const interestEmojis = [
-  {icon: '💎', text: 'Ruby', style: css`background-color: #C71A14; color: white; `},
-  {icon: 'JS', text: 'JavaScript', style: css`background-color: #F2D539;`},
-  {icon: '☁', text: 'Cloud (AWS focused)', style: css`background-color: #E5690A; color: white;`},
-  {icon: '🎵', text: 'Music', style: css`background-color: #1ED760; color: white;`},
-  {icon: '🎧', text: 'High-end headphones', style: css`background-color: #EACDCD;`},
-  {icon: '🌮', text: 'Food', style: css`background-color: #5DC4E9;`},
-  {icon: '🏋', text: 'Fitness', style: css`background-color: #FF69B4;`}
-];
+const AboutImage = styled(Image)``;
 
 const InterestList = styled.ul`
   list-style: none;
-  margin-left: 12px;
+  margin: 5rem auto;
+  width: 75%;
 `;
-const InterestListItem = styled.li`
-  border-radius: 100px;
-  width: 50%;
-  padding: 5px 0 5px 15px;
 
+const InterestListItem = styled.li`
+  border-radius: 2px;
+  padding: 0.7rem 0 0.3rem 2rem;
+  height: 5rem;
+  font-size: 3rem;
 `;
 
 const renderInterests = () => {
   const interests = interestEmojis.map(emojiObj => {
-    const {icon, text, style} = emojiObj;
-    return <InterestListItem css={style}>{icon} - {text}</InterestListItem>;
+    const { icon, text, style } = emojiObj;
+    return (
+      <InterestListItem css={style}>
+        {icon} - {text}
+      </InterestListItem>
+    );
   });
 
   return interests;
-}
+};
 
-export default () => (
-  <Layout>
-    <h1>👻 About Me 👻</h1>
-    <p>I'm Marco, an Irish Italian developer from London! 🇮🇪 🇬🇧 🇮🇹</p>
-    <p>My favourite emoji is the ghost 👻 👻 👻</p>
+const About = () => {
+  const { image } = useStaticQuery(graphql`
+    query {
+      image: file(relativePath: { eq: "about-chilling.jpg" }) {
+        sharp: childImageSharp {
+          fixed(width: 700, height: 956, quality: 100, grayscale: true) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
 
-    <h3>Into:</h3>
+  return (
+    <Layout>
+      <Hero
+        text="👻 About Me 👻"
+        spaced={spaced}
+      />
 
-    <InterestList>{renderInterests()}</InterestList>
+      <section>
+        <figure
+          css={css`
+            display: flex;
+            justify-content: flex-end;
+            border: 2px solid black;
+          `}
+        >
+          <AboutImage
+            fixed={image.sharp.fixed}
+            fadeIn={true}
+            alt="Chilling with some great headphones"
+          />
+          <figcaption
+            css={css`
+              font-size: 1.2rem;
+              font-weight: 700;
+              font-style: italic;
+              background-color: #fbc531;
+              border-left: 10px solid black;
+              padding: 1rem;
+              width: 25rem;
+            `}
+          >
+            <p>
+              <small>
+                I'm Marco, an Irish Italian developer from London! 🇮🇪 🇬🇧 🇮🇹
+              </small>
+            </p>
 
-    <p>
-      Most recently, all this typing has my wrists feeling a little tired so I'm
-      diving headfirst into the ergo mech keeb world ⌨ 😱. Looking forward to
-      geeking out a little on all these topics here!
-    </p>
+            <p>
+              <small>
+                Currently, I'm looking for an interesting new role as a
+                frontend-focused Fullstack Web Developer.
+              </small>
+            </p>
 
-    <Link to="/">&larr; Home</Link>
-  </Layout>
-);
+            <p>
+              <small>
+                I'm learning Rails for quick prototyping and being productive
+                with minimal tooling, as well as React for building scalable and
+                maintainable frontends.
+              </small>
+            </p>
+
+            <p>
+              <small>
+                Previously, I resided in Dublin where I worked with a Healthcare
+                startup on a cloud-based, mobile-first EHR system for care
+                facilities across Europe. My previous stack utilised C#,
+                AngularJS, TypeScript, vanilla JS, CSS, HTML.
+              </small>
+            </p>
+
+            <p>
+              <small>
+                My previous stack utilised C#, AngularJS, TypeScript, vanilla
+                JS, CSS, HTML.
+              </small>
+            </p>
+
+            <p>
+              <small>
+                Check out my personal and Flatiron-specific GitHub account (I'm
+                all about separation of concerns
+                <span className="medium-emoji">👌</span>) and/or follow me on
+                Twitter<span className="medium-emoji">✌</span>.
+              </small>
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Current interests:</h2>
+
+        <InterestList>{renderInterests()}</InterestList>
+      </section>
+    </Layout>
+  );
+};
+
+export default About;

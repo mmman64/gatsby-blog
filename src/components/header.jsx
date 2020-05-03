@@ -1,67 +1,20 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Link } from 'gatsby';
-
-// styled component
-const NavLink = styled(Link)`
-  color: #F5F5F1;
-  font-size: 1.5rem;
-  font-weight: ${props => props.fontWeight || 'normal'};
-  line-height: 1;
-  margin: 0 0.5rem 0 0;
-  padding: 0.25rem;
-  text-decoration: none;
-
-  &.current-page {
-    border-bottom: 2px solid #222;
-  }
-
-  &.last-of-type {
-    margin-right: 0;
-  }
-`;
-
-const HeroTitle = styled('div')`
-  font-family: 'Kaushan script', cursive;
-`;
+import SiteNav from './sitenav';
 
 const Header = () => (
   <header
     css={css`
-      background: #bc0101;
-      height: 20vh;
-      padding: 0.5rem calc((100vw - 550px -0.5rem) / 2);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%235e5e60' fill-opacity='0.18' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+      padding: 2rem calc((100vw - 1000px -0.5rem) / 2);
+      background-color: #fbc531;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 1);
+      display: flex;
+      align-items: center;
     `}
   >
-    <nav
-      css={css`
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0;
-      `}
-    >
-      <NavLink to="/">
-        Marco McNulty
-      </NavLink>
-      <NavLink to="/" activeClassName="current-page">
-        Home
-      </NavLink>
-      <NavLink to="/about/" activeClassName="current-page">
-        About
-      </NavLink>
-    </nav>
-
-  <HeroTitle>
-    <h1
-      css={css`
-      color: #F5F5F1;
-      text-align: center;
-      font-size: 5rem;
-      padding-top: 30px;
-      `}
-      >Welcome!</h1>
-  </HeroTitle>
+    <SiteNav />
 
   </header>
 );
