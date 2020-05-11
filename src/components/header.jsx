@@ -15,7 +15,6 @@ const Header = () => (
     `}
   >
     <SiteNav />
-    {/* <MobileNav /> */}
 
   </header>
 );
