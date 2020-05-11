@@ -16,7 +16,6 @@ const InterestList = styled.ul`
 const InterestListItem = styled.li`
   border-radius: 2px;
   padding: 0.7rem 0 0.3rem 2rem;
-  height: 5rem;
   font-size: 3rem;
 `;
 
@@ -70,7 +69,7 @@ const About = () => {
         css={css`
           margin-top: 0;
           padding-top: 10rem;
-          transform: perspective(150px) rotateY(-2deg);
+          transform: perspective(200px) rotateY(-2deg);
         `}
       >
         <figure
@@ -155,7 +154,7 @@ const About = () => {
         </figure>
       </section>
 
-      <section css={css`height: 100vh;`}>
+      <section>
         <h2>Current interests:</h2>
 
         <InterestList>{renderInterests()}</InterestList>
@@ -165,17 +164,3 @@ const About = () => {
 };
 
 export default About;
-
-{
-  /* <small className="about-aside-text">
-<ol
-  className="cloud-projects-list"
-  css={css`
-
-  `}
->
-  <li>Deploy a static site to AWS ✅</li>
-
-</ol>
-</small> */
-}
