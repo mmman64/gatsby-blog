@@ -7,7 +7,7 @@ const PostPreview = ({ post }) => (
   <Fragment>
       <article
     css={css`
-      margin: 2.8rem 0 1.5rem 0;
+      margin: 3rem 0 1.5rem 0;
     `}
   >
     <Link
@@ -34,7 +34,7 @@ const PostPreview = ({ post }) => (
       >
         {post.excerpt}
       </p>
-      <ArticleMeta datetime={post.dateime} articleTags={post.articleTags} />
+      <ArticleMeta datetime={post.datetime} articleTags={post.articleTags} />
     </div>
   </article>
   <hr />

@@ -4,7 +4,7 @@ import { Global, css } from '@emotion/core';
 import { Helmet } from 'react-helmet';
 import Header from './header';
 import Footer from './footer';
-import useSiteMetaData from '../hooks/use-sitemetadata';
+import useSiteMetaData from '../hooks/useSitemetadata';
 import 'typeface-open-sans';
 
 const Layout = ({ children }) => {
@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
 
           .siteContent {
             flex: 1;
-            margin: 9rem auto 0 auto;
+            margin: 9rem auto;
             padding: 0 2rem;
             max-width: 55.55rem;
           }
@@ -70,6 +70,7 @@ const Layout = ({ children }) => {
             background-color: #fbc532;
             border-radius: 5px;
             padding: 0 1rem;
+            margin-top: 5rem;
           }
 
           h3 {
@@ -81,7 +82,7 @@ const Layout = ({ children }) => {
           p {
             font-size: 1.25rem;
             font-weight: 400;
-            margin: 1.75rem 0;
+            margin: 0 0 1.25rem 0;
             line-height: 1.75rem;
           }
 
@@ -97,6 +98,7 @@ const Layout = ({ children }) => {
 
           .medium-emoji {
             font-size: 1.75rem;
+            
           }
         `}
       />

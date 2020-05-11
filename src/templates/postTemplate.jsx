@@ -9,7 +9,6 @@ export const query = graphql`
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
-        author
       }
       body
     }
@@ -24,7 +23,7 @@ const PostTemplate = ({ data: { mdx: post } }) => (
       css={css`
         font-size: 0.75rem;
       `}
-    >Posted by {post.frontmatter.author}</p>
+    >Posted: {post.frontmatter.date}</p>
     <MDXRenderer>{post.body}</MDXRenderer>
   </Layout>
 );
