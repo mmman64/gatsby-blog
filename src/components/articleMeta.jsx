@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-const ArticleMeta = ({ articleTags, datetime }) => {
+const ArticleMeta = ({ tags, date }) => {
   return (
     <div
       css={css`
@@ -16,7 +16,7 @@ const ArticleMeta = ({ articleTags, datetime }) => {
             font-weight: 400;
           `}
         >
-          Posted: <time datetime={datetime}>Human time</time>
+          Posted: <time date={date}>{date}</time>
         </span>
         <span
           css={css`
@@ -24,7 +24,7 @@ const ArticleMeta = ({ articleTags, datetime }) => {
             font-weight: 400;
           `}
         >
-          {articleTags}
+          {tags}
         </span>
       </small>
     </div>

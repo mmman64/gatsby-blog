@@ -93,12 +93,11 @@ const Layout = ({ children }) => {
 
           .blanched-emoji {
             color: transparent;
-            text-shadow: 0 0 #FFF;
+            text-shadow: 0 0 #fff;
           }
 
           .medium-emoji {
             font-size: 1.75rem;
-            
           }
         `}
       />
