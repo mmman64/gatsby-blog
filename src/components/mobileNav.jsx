@@ -3,11 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faTwitter,
-  faGithub,
-  faGithubSquare,
-} from '@fortawesome/free-brands-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 const linkStyle = css`
   color: #2f3640;
@@ -18,15 +14,17 @@ const linkStyle = css`
   }
 `;
 
-const NavItem = styled(`li`)`
-  font-size: 1.8rem;
+const LockMenu = styled(FontAwesomeIcon)`
+  font-size: 2rem;
   text-align: center;
-  padding: 0 0.55rem;
-  flex: ${props => (props.social ? 0.4 : 0.75)};
-  margin-right: ${props => props.last && '1rem'};
+  margin-right: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-const NavName = styled(`li`)`
+const NavName = styled(`div`)`
   font-size: 1.8rem;
   flex: 5;
   font-weight: 700;
@@ -35,13 +33,35 @@ const NavName = styled(`li`)`
   margin-left: 1rem;
 `;
 
-const SiteNav = () => (
+const handleClick = () => {
+  console.log("hi")
+}
+
+const MobileNav = () => (
+
   <nav
     css={css`
       width: 100%;
+      display: flex;
+      align-items: center;
     `}
   >
-    <ul
+    <NavName>
+      <Link to="/" css={linkStyle}>
+        Marco McNulty
+      </Link>
+    </NavName>
+    <LockMenu
+      icon={faLock}
+      css={linkStyle}
+      onClick={() => handleClick()} />
+  </nav>
+);
+
+export default MobileNav;
+
+{
+  /* <ul
       css={css`
         display: flex;
         list-style: none;
@@ -84,8 +104,5 @@ const SiteNav = () => (
           <FontAwesomeIcon icon={faTwitter} />
         </a>
       </NavItem>
-    </ul>
-  </nav>
-);
-
-export default SiteNav;
+    </ul> */
+}

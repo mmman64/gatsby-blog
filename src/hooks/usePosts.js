@@ -8,8 +8,9 @@ const usePosts = () => {
           frontmatter {
             title
             slug
+            date(formatString: "DD MMMM, YYYY")
           }
-          excerpt
+          excerpt(pruneLength: 250)
         }
       }
     }
@@ -18,6 +19,7 @@ const usePosts = () => {
   return data.allMdx.nodes.map(post => ({
     title: post.frontmatter.title,
     slug: post.frontmatter.slug,
+    date: post.frontmatter.date,
     excerpt: post.excerpt,
   }));
 };
