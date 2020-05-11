@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Layout from '../components/layout';
@@ -7,12 +7,10 @@ import Hero from '../components/hero';
 import { interestEmojis } from '../components/interestEmojis';
 import Image from 'gatsby-image';
 
-const AboutImage = styled(Image)``;
-
 const InterestList = styled.ul`
   list-style: none;
   margin: 5rem auto;
-  width: 75%;
+  width: 100%;
 `;
 
 const InterestListItem = styled.li`
@@ -20,6 +18,22 @@ const InterestListItem = styled.li`
   padding: 0.7rem 0 0.3rem 2rem;
   height: 5rem;
   font-size: 3rem;
+`;
+
+const AboutAsideText = styled.p`
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.2rem;
+  text-align: justify;
+`;
+
+const CloudProjectsList = styled.ul`
+  text-align: left;
+  font-size: 1.1rem;
+  padding-left: 0.5rem;
+  margin: 1rem;
+  line-height: 2rem;
 `;
 
 const renderInterests = () => {
@@ -40,7 +54,7 @@ const About = () => {
     query {
       image: file(relativePath: { eq: "about-chilling.jpg" }) {
         sharp: childImageSharp {
-          fixed(width: 700, height: 956, quality: 100, grayscale: true) {
+          fixed(width: 700, height: 1055, quality: 100, grayscale: true) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -50,85 +64,98 @@ const About = () => {
 
   return (
     <Layout>
-      <Hero
-        text="👻 About Me 👻"
-        spaced={spaced}
-      />
+      <Hero text="👻 About Me 👻" />
 
-      <section>
+      <section
+        css={css`
+          margin-top: 0;
+          padding-top: 10rem;
+          transform: perspective(150px) rotateY(-2deg);
+        `}
+      >
         <figure
           css={css`
             display: flex;
             justify-content: flex-end;
-            border: 2px solid black;
+            border: 15px solid black;
+            border-radius: 100px;
           `}
         >
-          <AboutImage
+          <Image
             fixed={image.sharp.fixed}
             fadeIn={true}
             alt="Chilling with some great headphones"
           />
           <figcaption
             css={css`
-              font-size: 1.2rem;
-              font-weight: 700;
-              font-style: italic;
               background-color: #fbc531;
-              border-left: 10px solid black;
-              padding: 1rem;
-              width: 25rem;
+              border-left: 5px solid black;
+              padding: 0.9rem;
+              width: 32rem;
             `}
           >
-            <p>
+            <AboutAsideText
+              css={css`
+                margin-top: 1rem;
+              `}
+            >
               <small>
-                I'm Marco, an Irish Italian developer from London! 🇮🇪 🇬🇧 🇮🇹
+                I'm Marco, an Irish Italian developer from London and I'm
+                currently looking for an interesting new role as a Fullstack Web
+                Developer!
               </small>
-            </p>
+            </AboutAsideText>
 
-            <p>
+            <AboutAsideText>
               <small>
-                Currently, I'm looking for an interesting new role as a
-                frontend-focused Fullstack Web Developer.
+                At the moment, I'm interested in Ruby on Rails for quick
+                prototyping and being productive with minimal tooling, as well
+                as React &amp; Co. (Gatsby, Node, GraphQL, TypeScript) for
+                building modern, scalable and maintainable applications.
               </small>
-            </p>
+            </AboutAsideText>
 
-            <p>
+            <AboutAsideText
+              css={css`
+                margin-bottom: 0.5rem;
+              `}
+            >
               <small>
-                I'm learning Rails for quick prototyping and being productive
-                with minimal tooling, as well as React for building scalable and
-                maintainable frontends.
+                I'm also currently working on projects that are extending my
+                skills into the DevOps area. Areas of focus include:
+                <CloudProjectsList>
+                  <li>Deploying a static site to AWS</li>
+                  <li>Deploying a full-stack application to AWS</li>
+                  <li>
+                    Refactoring a monolithic application to a microservices
+                    architecture (employing Docker, Kubernetes and Travis for
+                    CI/CD)
+                  </li>
+                  <li>Develop and deploy a serverless application to AWS</li>
+                </CloudProjectsList>
               </small>
-            </p>
+            </AboutAsideText>
 
-            <p>
+            <AboutAsideText>
               <small>
                 Previously, I resided in Dublin where I worked with a Healthcare
                 startup on a cloud-based, mobile-first EHR system for care
                 facilities across Europe. My previous stack utilised C#,
                 AngularJS, TypeScript, vanilla JS, CSS, HTML.
               </small>
-            </p>
+            </AboutAsideText>
 
-            <p>
+            <AboutAsideText>
               <small>
-                My previous stack utilised C#, AngularJS, TypeScript, vanilla
-                JS, CSS, HTML.
+                Check out my personal and Flatiron-specific GitHub accounts (I'm
+                all about separation of concerns and/or follow me on Twitter!
               </small>
-            </p>
-
-            <p>
-              <small>
-                Check out my personal and Flatiron-specific GitHub account (I'm
-                all about separation of concerns
-                <span className="medium-emoji">👌</span>) and/or follow me on
-                Twitter<span className="medium-emoji">✌</span>.
-              </small>
-            </p>
+            </AboutAsideText>
           </figcaption>
         </figure>
       </section>
 
-      <section>
+      <section css={css`height: 100vh;`}>
         <h2>Current interests:</h2>
 
         <InterestList>{renderInterests()}</InterestList>
@@ -138,3 +165,17 @@ const About = () => {
 };
 
 export default About;
+
+{
+  /* <small className="about-aside-text">
+<ol
+  className="cloud-projects-list"
+  css={css`
+
+  `}
+>
+  <li>Deploy a static site to AWS ✅</li>
+
+</ol>
+</small> */
+}

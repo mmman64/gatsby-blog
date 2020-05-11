@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { css } from '@emotion/core';
 import Layout from '../components/layout';
-import PostPreview from '../components/post-preview';
+import PostPreview from '../components/postPreview';
 import Hero from '../components/hero';
-import usePosts from '../hooks/use-posts';
+import usePosts from '../hooks/usePosts';
 
 export default () => {
   const posts = usePosts();
@@ -16,9 +16,7 @@ export default () => {
             margin-top: 5rem;
           `}
         >
-          <h2>
-            Posts
-          </h2>
+          <h2>Posts</h2>
 
           {posts.map(post => (
             <PostPreview key={post.slug} post={post} />
