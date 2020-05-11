@@ -14,8 +14,8 @@ const Header = () => (
       align-items: center;
     `}
   >
-    {/* <SiteNav /> */}
-    <MobileNav />
+    <SiteNav />
+    {/* <MobileNav /> */}
 
   </header>
 );
