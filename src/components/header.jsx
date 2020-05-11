@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import SiteNav from './sitenav';
+import SiteNav from './siteNav';
+import MobileNav from './mobilenav';
 
 const Header = () => (
   <header
@@ -13,7 +14,8 @@ const Header = () => (
       align-items: center;
     `}
   >
-    <SiteNav />
+    {/* <SiteNav /> */}
+    <MobileNav />
 
   </header>
 );
