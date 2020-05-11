@@ -155,7 +155,7 @@ const About = () => {
         </figure>
       </section>
 
-      <section css={css`height: 100vh;`}>
+      <section>
         <h2>Current interests:</h2>
 
         <InterestList>{renderInterests()}</InterestList>
@@ -165,17 +165,3 @@ const About = () => {
 };
 
 export default About;
-
-{
-  /* <small className="about-aside-text">
-<ol
-  className="cloud-projects-list"
-  css={css`
-
-  `}
->
-  <li>Deploy a static site to AWS ✅</li>
-
-</ol>
-</small> */
-}

@@ -22,9 +22,9 @@ const Footer = () => (
   >
     <small>
       <span css={css`font-style: italic;`}>Made with</span>
-      <FooterEmoji>💪</FooterEmoji>
-      <FooterEmoji>🎧</FooterEmoji>
-      <FooterEmoji>🍺</FooterEmoji>
+      <FooterEmoji role="img" aria-label="bicep emoji">💪</FooterEmoji>
+      <FooterEmoji role="img" aria-label="music emoji">🎧</FooterEmoji>
+      <FooterEmoji role="img" aria-label="beer emoji">🍺</FooterEmoji>
     </small>
   </footer>
 );

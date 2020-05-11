@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/layout';
 
 export const query = graphql`
@@ -9,6 +9,7 @@ export const query = graphql`
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        date(formatString: "DD MMMM, YYYY")
       }
       body
     }
@@ -18,12 +19,22 @@ export const query = graphql`
 // aliasing mdx to post
 const PostTemplate = ({ data: { mdx: post } }) => (
   <Layout>
-    <h1>{post.frontmatter.title}</h1>
+    <h1
+      css={css`
+        margin-bottom: 1rem;
+        margin-left: -6px;
+      `}
+    >
+      {post.frontmatter.title}
+    </h1>
     <p
       css={css`
-        font-size: 0.75rem;
+        font-size: 0.8rem;
+        color: #ff729f;
       `}
-    >Posted: {post.frontmatter.date}</p>
+    >
+      Posted: {post.frontmatter.date}
+    </p>
     <MDXRenderer>{post.body}</MDXRenderer>
   </Layout>
 );
