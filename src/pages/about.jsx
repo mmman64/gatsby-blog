@@ -147,7 +147,7 @@ const About = () => {
             <AboutAsideText>
               <small>
                 Check out my personal and Flatiron-specific GitHub accounts (I'm
-                all about separation of concerns and/or follow me on Twitter!
+                all about separation of concerns 👌) and/or follow me on Twitter!
               </small>
             </AboutAsideText>
           </figcaption>
