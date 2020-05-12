@@ -48,7 +48,9 @@ const SiteNav = () => (
       `}
     >
       <NavName>
-        <Link to="/" css={linkStyle}>Marco McNulty</Link>
+        <Link to="/" css={linkStyle}>
+          Marco McNulty
+        </Link>
       </NavName>
 
       <NavItem>
