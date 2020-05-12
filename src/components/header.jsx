@@ -1,7 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import SiteNav from './siteNav';
-import MobileNav from './mobilenav';
 
 const Header = () => (
   <header
