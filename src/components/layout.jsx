@@ -31,7 +31,6 @@ const Layout = ({ children }) => {
             text-rendering: optimizeLegibility;
             box-sizing: border-box;
             height: 100%;
-            background-color: #ffffff;
           }
 
           body {
