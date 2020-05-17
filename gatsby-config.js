@@ -10,7 +10,6 @@ module.exports = {
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
-
     },
     {
       resolve: 'gatsby-plugin-mdx',
@@ -18,8 +17,22 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.jsx'),
         },
-    }
-  },
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

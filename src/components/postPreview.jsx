@@ -2,15 +2,19 @@ import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 import ArticleMeta from './articleMeta';
+import facepaint from 'facepaint';
+import MediaQueries from '../config/responsive';
+
+// grab the last 2 breakpoints to alt. 'ul' display between none and flex
+const mq = facepaint(MediaQueries.slice(3, 5));
 
 const PostPreview = ({ post }) => (
   <Fragment>
     <div
       to={post.slug}
-      css={css`
-        margin: 1rem 1rem 0 0;
-        width: 100%;
-      `}
+      css={mq({
+        margin: '1rem auto',
+      })}
     >
       <article
         css={css`
@@ -30,6 +34,7 @@ const PostPreview = ({ post }) => (
           css={css`
             text-align: justify;
             margin: 1.4rem 0;
+            line-height: 1.5;
           `}
         >
           {post.excerpt}
