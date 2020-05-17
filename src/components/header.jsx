@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Link } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faTwitter,
-  faGithub,
-  faGithubSquare,
-} from '@fortawesome/free-brands-svg-icons';
+import facepaint from 'facepaint';
+import MediaQueries from '../config/responsive';
+import { DesktopNav } from './desktopNav';
+import MobileNav from './mobileNav';
+import { BurgerIcon } from './burgerIcon';
+
+
+// grab the last 2 breakpoints to alt. 'ul' display between none and flex
+const mq = facepaint(MediaQueries.slice(-2));
+
+// calc((100vw - 100px - 0.5rem) / 2)
 
 const SiteHeader = styled(`header`)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem calc((100vw - 1000px -0.5rem) / 2);
+  padding: 2rem calc((100vw - 80rem) / 2);
   background-color: #fbc531;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 1);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%235e5e60' fill-opacity='0.18' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
@@ -24,20 +29,7 @@ const SiteName = styled(`div`)`
   font-weight: 700;
   text-align: left;
   letter-spacing: 0.11rem;
-`;
-
-const Burger = styled(`button`)`
-  background-color: inherit;
-  border: none;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-const MobileNav = styled(`nav`)`
-  visibility: ${props => (props.open ? 'visible' : 'hidden')};
-  display: flex;
+  margin-left: 1rem;
 `;
 
 class Header extends Component {
@@ -51,61 +43,34 @@ class Header extends Component {
 
   render() {
     return (
-      <SiteHeader>
-        <div
-          css={css`
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          `}
-        >
-          <SiteName>Marco McNulty</SiteName>
-          <div>
-            <Burger onClick={() => this.handleMenuToggle()} type="button">
-              <svg
-                css={css`
-                  height: 2rem;
-                  width: 2rem;
-                `}
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {this.state.isOpen ? (
-                  <path d="M6 18L18 6M6 6l12 12"></path>
-                ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16"></path>
-                )}
-              </svg>
-            </Burger>
+      <Fragment>
+        <SiteHeader>
+          <div
+            css={css`
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            `}
+          >
+            <SiteName>
+              <Link to="/">Marco McNulty</Link>
+            </SiteName>
+            <DesktopNav />
+            <BurgerIcon
+              isOpen={this.state.isOpen}
+              handleMenuToggle={this.handleMenuToggle}
+            />
           </div>
+        </SiteHeader>
+        <div css={css`
+          position: relative;
+        `}>
+        <MobileNav isOpen={this.state.isOpen} />
         </div>
-      </SiteHeader>
+      </Fragment>
     );
   }
 }
 
 export default Header;
-
-{
-  /* <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg> */
-}
-
-{
-  /* <header
-css={css`
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%235e5e60' fill-opacity='0.18' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-  padding: 2rem calc((100vw - 1000px -0.5rem) / 2);
-  background-color: #fbc531;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 1);
-  display: flex;
-  align-items: center;
-`}
->
-<SiteNav />
-</header> */
-}

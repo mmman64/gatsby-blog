@@ -5,53 +5,63 @@ export const interestEmojis = [
     icon: '💎',
     text: 'Ruby',
     style: css`
-      background-color: #c71a14;
-      color: white;
+      color: transparent;
+      text-shadow: 0 0 #c80000;
+      font-weight: 700;
     `,
   },
   {
     icon: 'JS',
     text: 'JavaScript',
     style: css`
-      background-color: #f2d539;
+      color: #f5d102;
+      font-weight: 700;
+
     `,
   },
   {
     icon: '☁',
-    text: 'Cloud (AWS focused)',
+    text: 'Cloud',
     style: css`
-      background-color: #e5690a;
-      color: white;
+      color: #f99500;
+      font-weight: 700;
+
     `,
   },
   {
     icon: '🎧',
-    text: 'High-end headphones',
+    text: 'Headphones',
     style: css`
-      background-color: #eacdcd;
+      color: #9c88ff;
+      font-weight: 700;
+
     `,
   },
   {
     icon: '🎵',
     text: 'Music',
     style: css`
-      background-color: #1ed760;
-      color: white;
+      color: #22cb5d;
+      font-weight: 700;
+
     `,
   },
   {
     icon: '🏋',
     text: 'Fitness',
     style: css`
-      background-color: #ff69b4;
+      color: #ff729f;
+      font-weight: 700;
+
     `,
   },
   {
     icon: '🌮',
     text: 'Food',
     style: css`
-      background-color: #5dc4e9;
-      color: white;
+      color: #5fbfe2;
+      font-weight: 700;
+
     `,
   },
 ];
