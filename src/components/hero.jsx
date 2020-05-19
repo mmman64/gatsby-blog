@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import facepaint from 'facepaint';
 import { getMediaQuery as mq } from '../helpers/mediaQueryHelpers';
 import { getAllMediaQueries as allMq } from '../helpers/mediaQueryHelpers';
 
