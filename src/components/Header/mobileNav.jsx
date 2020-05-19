@@ -1,7 +1,8 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { Link } from 'gatsby';
+import { getMediaQuery as mq } from '../../helpers/mediaQueryHelpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter,
@@ -24,24 +25,34 @@ const NavItem = styled(`li`)`
   text-align: center;
   flex: 1;
   padding: 2rem 0;
+  ${mq('phoneSmall')} {
+    font-size: 1.5rem;
+  };
+  ${mq('phoneLandscape')} {
+    font-size: 3rem;
+  };
+  ${mq('tabletPortrait')} {
+    font-size: 4rem;
+  };
 `;
 
 const HR = styled(`hr`)`
   border-color: #ff729f;
 `;
 
-const MobileNav = ({ isOpen }) => (
+const MobileNav = ({ menuOpen }) => (
   <nav
     css={css`
       width: 100%;
       position: absolute;
       opacity: 0.95;
       background-color: black;
-      visibility: ${isOpen ? 'visible' : 'hidden'};
+      visibility: ${menuOpen ? 'visible' : 'hidden'};
+      z-index: 1;
     `}
   >
-    <ul>
-      <div>
+    <ul css={css`height: 100%;`}>
+      <div css={css`height: 50%;`}>
         <NavItem>
           <Link to="/" css={linkStyle} activeClassName="current-page">
             Home
@@ -56,23 +67,29 @@ const MobileNav = ({ isOpen }) => (
           </Link>
         </NavItem>
 
-       <HR />
+        <HR />
       </div>
 
       <div
-        css={css`
-          display: flex;
-          list-style: none;
-          width: 50%;
-          margin: 0 auto;
-        `}
+        css={{
+          height: '25%',
+          display: 'flex',
+          justifyContent: 'space-between',
+          listStyle: 'none',
+          width: '80%',
+          margin: '0 auto',
+          [mq('phonePortrait')]: {
+            width: '50%'
+          },
+        }}
       >
         <NavItem social>
           <a
             href="https://github.com/mmman64"
             target="_blank"
             rel="noopener noreferrer"
-            css={linkStyle}>
+            css={linkStyle}
+          >
             <FontAwesomeIcon icon={faGithub} />
           </a>
         </NavItem>
@@ -86,7 +103,8 @@ const MobileNav = ({ isOpen }) => (
             href="https://github.com/Marco-FI-SEI"
             target="_blank"
             rel="noopener noreferrer"
-            css={linkStyle}>
+            css={linkStyle}
+          >
             <FontAwesomeIcon icon={faGithubSquare} />
           </a>
         </NavItem>
@@ -100,7 +118,8 @@ const MobileNav = ({ isOpen }) => (
             href="https://twitter.com/MarcoMcnulty"
             target="_blank"
             rel="noopener noreferrer"
-            css={linkStyle}>
+            css={linkStyle}
+          >
             <FontAwesomeIcon icon={faTwitter} />
           </a>
         </NavItem>

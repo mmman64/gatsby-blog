@@ -1,26 +1,43 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import facepaint from 'facepaint';
-import MediaQueries from '../config/responsive';
-
-// grab the last 2 breakpoints to alt. 'ul' display between none and flex
-const mq = facepaint(MediaQueries.slice(3, 5));
+import { getMediaQuery as mq } from '../helpers/mediaQueryHelpers';
+import { getAllMediaQueries as allMq } from '../helpers/mediaQueryHelpers';
 
 const Hero = ({ text }) => (
   <section
-    css={mq({
+    css={allMq({
       textAlign: 'center',
-      marginTop: '10%',
-      maxWidth: ['100%', '50%'],
+      marginTop: [
+        '30%',
+        '',
+        '',
+        '20%',
+        '20%',
+        '15%',
+        '15%',
+        '10%',
+        '',
+        '10%',
+        '',
+        '',
+      ],
     })}
   >
     <h1
-      css={css`
-        border-bottom: 0.5rem solid #ff729f;
-        border-radius: 20px;
-        display: inline-block;
-        padding-bottom: 0.75rem;
-      `}
+      css={{
+        borderBottom: '0.5rem solid #ff729f',
+        borderRadius: '20px',
+        display: 'inline-block',
+        paddingBottom: '0.75rem',
+        textAlign: 'center',
+        [mq('phoneSmall')]: {
+          fontSize: '2rem',
+        },
+        [mq('tabletPortrait')]: {
+          fontSize: '3rem',
+        },
+      }}
     >
       {text}
     </h1>

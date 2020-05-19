@@ -1,39 +1,42 @@
-import React, { Fragment } from 'react';
-import 'normalize.css';
 import { Global, css } from '@emotion/core';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import Header from './header';
+import Header from './Header/header';
 import Footer from './footer';
-import useSiteMetaData from '../hooks/useSitemetadata';
+import normalize from 'normalize.css';
 import 'typeface-open-sans';
+import { getAllMediaQueries as allMq } from '../helpers/mediaQueryHelpers';
+import { getMediaQuery as mq } from '../helpers/mediaQueryHelpers';
+import useSiteMetaData from '../hooks/useSitemetadata';
 
 const Layout = ({ children }) => {
   const { title, description } = useSiteMetaData();
 
   return (
-    <Fragment>
+    <>
       <Global
         styles={css`
+          ${normalize}
 
-        html,
+          html,
         body {
-          color: #353b48;
-          font-family: 'Lato', 'Arial', sans-serif;
-          font-size: 18px;
-          font-weight: 300;
-          text-rendering: optimizeLegibility;
-          box-sizing: border-box;
-          height: 100vh;
-          width: 100vw;
-        }
+            color: #353b48;
+            font-family: 'Lato', 'Arial', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            text-rendering: optimizeLegibility;
+            box-sizing: border-box;
+            height: 100vh;
+            width: 100vw;
+          }
 
-        *,
-        *:before,
-        *:after {
-          margin: 0;
-          padding: 0;
-          box-sizing: inherit;
-        }
+          *,
+          *:before,
+          *:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+          }
 
           body {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%235e5e60' fill-opacity='0.18' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
@@ -48,7 +51,10 @@ const Layout = ({ children }) => {
 
           .siteContent {
             flex: 1;
-            margin: 1rem;
+            margin: 0;
+            ${[mq('phoneSmall')]} {
+              margin: 1rem;
+            }
           }
 
           section {
@@ -111,7 +117,7 @@ const Layout = ({ children }) => {
         <main className="siteContent">{children}</main>
         <Footer />
       </div>
-    </Fragment>
+    </>
   );
 };
 

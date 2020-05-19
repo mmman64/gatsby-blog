@@ -1,4 +1,15 @@
-const GLOBAL_BREAKPOINTS = [500, 576, 768, 992, 1200, 1600, 1800, 2300, 2500];
-const MEDIA_QUERIES = GLOBAL_BREAKPOINTS.map(bp => `@media (min-width: ${bp}px)`);
+export const GLOBAL_BREAKPOINTS = {
+  phoneSmall: 300,
+  phonePortrait: 576,
+  phoneLandscape: 768,
+  tabletPortrait: 992,
+  tabletLandscape: 1200,
+  laptopSmall: 1400,
+  laptopMed: 1600,
+  laptopLarge: 1800,
+  desktopSmall: 2000,
+  desktopMedium: 2250,
+  desktopLarge: 2500
+};
 
-export default MEDIA_QUERIES;
+// const MEDIA_QUERIES = GLOBAL_BREAKPOINTS.map(bp => `@media (min-width: ${bp}px)`);
