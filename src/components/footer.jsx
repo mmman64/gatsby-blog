@@ -1,6 +1,6 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 
 const FooterEmoji = styled(`span`)`
   color: transparent;

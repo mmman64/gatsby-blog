@@ -1,25 +1,13 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
-import { css } from '@emotion/core';
-import facepaint from 'facepaint';
-import MediaQueries from '../config/responsive';
 import styled from '@emotion/styled';
 import Layout from '../components/layout';
 import Hero from '../components/hero';
-import { interestEmojis } from '../components/interestEmojis';
+import { getMediaQuery as mq } from '../helpers/mediaQueryHelpers';
+import { getAllMediaQueries as allMq } from '../helpers/mediaQueryHelpers';
+import { interestEmojis } from '../config/interestEmojis';
 import Image from 'gatsby-image';
-
-// breakpoints to for image frame sizing
-const allMq = facepaint(MediaQueries);
-
-// breakpoints for figcaption and mobile only
-let tempMQ = MediaQueries.slice(0, 1);
-
-// breakpoint for only smallest viewport
-const mobOnly = facepaint(MediaQueries[3]);
-
-tempMQ.push(MediaQueries.slice(5, 6)[0]);
-const figMq = facepaint(tempMQ);
 
 const InterestList = styled.ul`
   list-style: none;
@@ -44,6 +32,16 @@ const AboutAsideText = styled.p`
   font-style: italic;
   line-height: 1.8rem;
   word-spacing: 5px;
+  ${[mq('phoneSmall')]} {
+    font-size: 1.4rem;
+  };
+  ${[mq('phoneLandscape')]} {
+    font-size: 1.8rem;
+  };
+  ${[mq('tabletPortrait')]} {
+    font-size: 2rem;
+  };
+
 `;
 
 const CloudProjectsList = styled.ul`
@@ -53,6 +51,15 @@ const CloudProjectsList = styled.ul`
   padding-left: 0.5rem;
   margin: 1rem;
   line-height: 1.8rem;
+  ${[mq('phoneSmall')]} {
+    font-size: 1rem;
+  };
+  ${[mq('phoneLandscape')]} {
+    font-size: 1.2rem;
+  };
+  ${[mq('tabletPortrait')]} {
+    font-size: 1.5rem;
+  };
 `;
 
 const renderInterests = () => {
@@ -84,47 +91,63 @@ const About = () => {
   return (
     <Layout>
       <Hero text="About" />
-
       <section
-        css={allMq({
+        css={{
           margin: '0 auto',
-          padding: [0, 0, 0, 0, 0, 0, '5%'],
-          transform: [
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            'perspective(300px) rotateY(-2deg)',
-          ],
-        })}
+          padding: 0,
+          [mq('')]: {
+            padding: '',
+          },
+          [mq('')]: {
+            transform: 'perspective(300px) rotateY(-2deg)',
+          },
+        }}
       >
         <figure
-          css={figMq({
-            display: ['block', 'block', 'flex'],
+          css={{
+            display: 'block',
             justifyContent: 'flex-end',
-            border: '15px solid black',
-            borderRadius: [0, 0, '100px'],
+            boxShadow: '2px 5px 15px 5px rgba(0, 0, 0, 1)',
+            // border: '15px solid black',
+            borderRadius: 0,
             maxWidth: '1200px',
-            margin: '0 auto',
-          })}
+            margin: '2rem auto',
+            zIndex: 0
+          }}
+          //   figMq({
+          //   display: ['block', 'block', 'flex'],
+          //   justifyContent: 'flex-end',
+          //   border: '15px solid black',
+          //   borderRadius: [0, 0, '100px'],
+          //   maxWidth: '1200px',
+          //   margin: '0 auto',
+          // })}
         >
           <Image
             fluid={{ ...image.sharp.fluid, aspectRatio: 3 / 4 }}
             style={{
-              maxWidth: 'calc((100vw - 66px))',
+              maxWidth: 'calc((100vw))',
               minWidth: 'calc((30vw))',
             }}
             alt="Chilling with some great headphones"
           />
           <figcaption
-            css={figMq({
+            css={{
               backgroundColor: '#fbc531',
-              borderLeft: '5px solid black',
               padding: '0.9rem',
-              width: ['100%', '100%', '70%'],
-            })}
+              width: '100%',
+              // borderTop: '2px solid black',
+              [mq('phoneSmall')]: {
+                fontSize: '0.5rem'
+              },
+            }}
+
+            //   figMq({
+            //   backgroundColor: '#fbc531',
+            //   borderLeft: '5px solid black',
+            //   padding: '0.9rem',
+            //   width: ['100%', '100%', '70%'],
+            // })}
           >
             <AboutAsideText
               css={css`
@@ -132,7 +155,7 @@ const About = () => {
               `}
             >
               <small>
-                I'm Marco - an Irish Italian developer from London and I'm
+                I'm Marco - an 🇮🇪 + 🇮🇹 developer from London and I'm
                 currently looking for an interesting new role as a Fullstack Web
                 Developer!
               </small>
@@ -203,6 +226,33 @@ const About = () => {
           </figcaption>
         </figure>
       </section>
+    </Layout>
+  );
+};
+
+export default About;
+
+{
+  /* <Layout>
+      <Hero text="About" />
+
+      <section
+        css={allMq({
+          margin: '0 auto',
+          padding: [0, 0, 0, 0, 0, 0, '5%'],
+          transform: [
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            'perspective(300px) rotateY(-2deg)',
+          ],
+        })}
+      >
+
+      </section>
 
       <section
         css={mobOnly({
@@ -223,8 +273,5 @@ const About = () => {
 
         <InterestList>{renderInterests()}</InterestList>
       </section>
-    </Layout>
-  );
-};
-
-export default About;
+    </Layout> */
+}

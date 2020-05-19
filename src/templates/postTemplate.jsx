@@ -1,13 +1,9 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import facepaint from 'facepaint';
-import MediaQueries from '../config/responsive';
 import Layout from '../components/layout';
 
-// grab all media queries
-const mq = facepaint(MediaQueries);
 
 export const query = graphql`
   query($slug: String!) {
@@ -25,22 +21,22 @@ export const query = graphql`
 const PostTemplate = ({ data: { mdx: post } }) => (
   <Layout>
     <h1
-      css={mq({
+      css={{
         marginTop: '10%',
-        marginBottom: ['20%', '20%', '20%', '10%', '10%', '5%'],
+        marginBottom: '20%',
         textAlign: 'center',
-      })}
+      }}
     >
       {post.frontmatter.title}
     </h1>
 
     <div
-      css={mq({
-        width: ['100%', '80%'],
+      css={{
+        width: '75%',
         margin: '0 auto',
-        textAlign: ['left', 'justify'],
+        textAlign: 'left',
         lineHeight: '2rem',
-      })}
+      }}
     >
       <MDXRenderer>{post.body}</MDXRenderer>
     </div>
