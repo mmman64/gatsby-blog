@@ -5,7 +5,6 @@ import Header from './Header/header';
 import Footer from './footer';
 import normalize from 'normalize.css';
 import 'typeface-open-sans';
-import { getAllMediaQueries as allMq } from '../helpers/mediaQueryHelpers';
 import { getMediaQuery as mq } from '../helpers/mediaQueryHelpers';
 import useSiteMetaData from '../hooks/useSitemetadata';
 
@@ -19,15 +18,30 @@ const Layout = ({ children }) => {
           ${normalize}
 
           html,
-        body {
+          body {
             color: #353b48;
             font-family: 'Lato', 'Arial', sans-serif;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 300;
             text-rendering: optimizeLegibility;
             box-sizing: border-box;
             height: 100vh;
             width: 100vw;
+            ${mq('phoneSmall')} {
+              font-size: 0.6rem
+            };
+            ${mq('phonePortrait')} {
+              font-size: 1rem
+            };
+            ${mq('tabletPortrait')} {
+              font-size: 1.2rem
+            };
+            ${mq('tabletLandscape')} {
+              font-size: 1.3rem
+            };
+            ${mq('laptopSmall')} {
+              font-size: 1.5rem
+            };
           }
 
           *,
@@ -52,14 +66,11 @@ const Layout = ({ children }) => {
           .siteContent {
             flex: 1;
             margin: 0;
-            ${[mq('phoneSmall')]} {
-              margin: 1rem;
-            }
           }
 
           section {
             width: 100%;
-            margin: 2% auto;
+            margin: 1rem auto;
           }
 
           h1 {
@@ -108,6 +119,7 @@ const Layout = ({ children }) => {
       {/* Helmet lets you modify the head of a React document */}
       <Helmet>
         <html lang="en" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>"></link>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>

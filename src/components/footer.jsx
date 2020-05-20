@@ -18,13 +18,14 @@ const Footer = () => (
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 5rem;
     `}
   >
-    <small>
+    <small css={css`font-size: 0.8rem;`}>
       <span css={css`font-style: italic;`}>Made with</span>
-      <FooterEmoji role="img" aria-label="bicep emoji">💪</FooterEmoji>
-      <FooterEmoji role="img" aria-label="music emoji">🎧</FooterEmoji>
-      <FooterEmoji role="img" aria-label="beer emoji">🍺</FooterEmoji>
+      <FooterEmoji role="img" ariaLabel="bicep emoji">💪</FooterEmoji>
+      <FooterEmoji role="img" ariaLabel="music emoji">🎧</FooterEmoji>
+      <FooterEmoji role="img" ariaLabel="beer emoji">🍺</FooterEmoji>
     </small>
   </footer>
 );

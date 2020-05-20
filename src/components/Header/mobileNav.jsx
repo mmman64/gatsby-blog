@@ -25,15 +25,6 @@ const NavItem = styled(`li`)`
   text-align: center;
   flex: 1;
   padding: 2rem 0;
-  ${mq('phoneSmall')} {
-    font-size: 1.5rem;
-  };
-  ${mq('phoneLandscape')} {
-    font-size: 3rem;
-  };
-  ${mq('tabletPortrait')} {
-    font-size: 4rem;
-  };
 `;
 
 const HR = styled(`hr`)`
@@ -51,8 +42,8 @@ const MobileNav = ({ menuOpen }) => (
       z-index: 1;
     `}
   >
-    <ul css={css`height: 100%;`}>
-      <div css={css`height: 50%;`}>
+    <ul>
+      <div>
         <NavItem>
           <Link to="/" css={linkStyle} activeClassName="current-page">
             Home
@@ -78,9 +69,6 @@ const MobileNav = ({ menuOpen }) => (
           listStyle: 'none',
           width: '80%',
           margin: '0 auto',
-          [mq('phonePortrait')]: {
-            width: '50%'
-          },
         }}
       >
         <NavItem social>
