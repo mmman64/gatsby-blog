@@ -8,6 +8,7 @@ import { getMediaQuery as mq } from '../helpers/mediaQueryHelpers';
 import { getAllMediaQueries as allMq } from '../helpers/mediaQueryHelpers';
 import { interestEmojis } from '../config/interestEmojis';
 import Image from 'gatsby-image';
+import { faAutoprefixer } from '@fortawesome/free-brands-svg-icons';
 
 const InterestList = styled.ul`
   list-style: none;
@@ -32,34 +33,23 @@ const AboutAsideText = styled.p`
   font-style: italic;
   line-height: 1.8rem;
   word-spacing: 5px;
-  ${[mq('phoneSmall')]} {
-    font-size: 1.4rem;
-  };
-  ${[mq('phoneLandscape')]} {
-    font-size: 1.8rem;
-  };
-  ${[mq('tabletPortrait')]} {
-    font-size: 2rem;
-  };
-
+  letter-spacing: 2px;
+  ${[mq('laptopMedium')]} {
+    font-size: 1.2rem;
+  }
 `;
 
 const CloudProjectsList = styled.ul`
   text-align: left;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 2px;
   padding-left: 0.5rem;
   margin: 1rem;
   line-height: 1.8rem;
-  ${[mq('phoneSmall')]} {
-    font-size: 1rem;
-  };
-  ${[mq('phoneLandscape')]} {
-    font-size: 1.2rem;
-  };
-  ${[mq('tabletPortrait')]} {
-    font-size: 1.5rem;
-  };
+  ${[mq('laptopMedium')]} {
+    font-size: 0.9rem;
+  }
 `;
 
 const renderInterests = () => {
@@ -93,12 +83,9 @@ const About = () => {
       <Hero text="About" />
       <section
         css={{
-          margin: '0 auto',
-          padding: 0,
-          [mq('')]: {
-            padding: '',
-          },
-          [mq('')]: {
+          width: '80%',
+          margin: '10rem auto',
+          [mq('laptopMedium')]: {
             transform: 'perspective(300px) rotateY(-2deg)',
           },
         }}
@@ -106,28 +93,27 @@ const About = () => {
         <figure
           css={{
             display: 'block',
+            margin: '0 auto',
             justifyContent: 'flex-end',
             boxShadow: '2px 5px 15px 5px rgba(0, 0, 0, 1)',
-            // border: '15px solid black',
-            borderRadius: 0,
             maxWidth: '1200px',
-            margin: '2rem auto',
-            zIndex: 0
+            zIndex: 0,
+            [mq('tabletPortrait')]: {
+              width: '95%',
+            },
+            [mq('laptopMedium')]: {
+              display: 'flex',
+              border: '15px solid black',
+              boxShadow: '8px 8px 15px 8px rgba(0, 0, 0, 1)',
+              borderRadius: '100px',
+              maxWidth: '1800px',
+            },
           }}
-          //   figMq({
-          //   display: ['block', 'block', 'flex'],
-          //   justifyContent: 'flex-end',
-          //   border: '15px solid black',
-          //   borderRadius: [0, 0, '100px'],
-          //   maxWidth: '1200px',
-          //   margin: '0 auto',
-          // })}
         >
           <Image
             fluid={{ ...image.sharp.fluid, aspectRatio: 3 / 4 }}
             style={{
-              maxWidth: 'calc((100vw))',
-              minWidth: 'calc((30vw))',
+              width: '100%'
             }}
             alt="Chilling with some great headphones"
           />
@@ -135,19 +121,10 @@ const About = () => {
             css={{
               backgroundColor: '#fbc531',
               padding: '0.9rem',
-              width: '100%',
-              // borderTop: '2px solid black',
-              [mq('phoneSmall')]: {
-                fontSize: '0.5rem'
+              [mq('laptopMedium')]: {
+                width: '100%',
               },
             }}
-
-            //   figMq({
-            //   backgroundColor: '#fbc531',
-            //   borderLeft: '5px solid black',
-            //   padding: '0.9rem',
-            //   width: ['100%', '100%', '70%'],
-            // })}
           >
             <AboutAsideText
               css={css`
@@ -155,8 +132,8 @@ const About = () => {
               `}
             >
               <small>
-                I'm Marco - an 🇮🇪 + 🇮🇹 developer from London and I'm
-                currently looking for an interesting new role as a Fullstack Web
+                I'm Marco - an 🇮🇪 + 🇮🇹 developer from London and I'm currently
+                looking for an interesting new role as a Fullstack Web
                 Developer!
               </small>
             </AboutAsideText>
@@ -231,47 +208,3 @@ const About = () => {
 };
 
 export default About;
-
-{
-  /* <Layout>
-      <Hero text="About" />
-
-      <section
-        css={allMq({
-          margin: '0 auto',
-          padding: [0, 0, 0, 0, 0, 0, '5%'],
-          transform: [
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            'perspective(300px) rotateY(-2deg)',
-          ],
-        })}
-      >
-
-      </section>
-
-      <section
-        css={mobOnly({
-          margin: '0 auto',
-          width: ['100%', '50%'],
-        })}
-      >
-        <h2
-          css={css`
-            width: 100%;
-            text-align: center;
-            font-style: italic;
-            border-width: 10px;
-          `}
-        >
-          Current interests:
-        </h2>
-
-        <InterestList>{renderInterests()}</InterestList>
-      </section>
-    </Layout> */
-}

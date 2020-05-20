@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/layout';
-
 
 export const query = graphql`
   query($slug: String!) {
@@ -22,8 +21,8 @@ const PostTemplate = ({ data: { mdx: post } }) => (
   <Layout>
     <h1
       css={{
-        marginTop: '10%',
-        marginBottom: '20%',
+        marginTop: '10rem',
+        marginBottom: '5rem',
         textAlign: 'center',
       }}
     >
@@ -33,22 +32,35 @@ const PostTemplate = ({ data: { mdx: post } }) => (
     <div
       css={{
         width: '75%',
+        maxWidth: '1200px',
         margin: '0 auto',
         textAlign: 'left',
         lineHeight: '2rem',
       }}
     >
       <MDXRenderer>{post.body}</MDXRenderer>
+      <p
+        css={css`
+          font-size: 0.8rem;
+          color: #ff729f;
+          text-align: right;
+          margin: 0;
+        `}
+      >
+        Posted: {post.frontmatter.date}
+      </p>
+      <Link to="/">
+        <span
+          css={css`
+            color: #ff729f;
+            font-size: 1.25rem;
+            font-weight: 400;
+          `}
+        >
+          &larr; Go back...
+        </span>
+      </Link>
     </div>
-    <p
-      css={css`
-        font-size: 0.8rem;
-        color: #ff729f;
-        text-align: right;
-      `}
-    >
-      Posted: {post.frontmatter.date}
-    </p>
   </Layout>
 );
 

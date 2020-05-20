@@ -16,9 +16,12 @@ export default () => {
         css={{
           marginTop: '10%',
           maxWidth: '80%',
-          [mq('phoneSmall')]: {
-            width: '100%',
+          [mq('phoneLandscape')]: {
+            width: '75%',
           },
+          [mq('desktopSmall')]: {
+            maxWidth: '50%'
+          }
         }}
       >
         <h2>Posts</h2>

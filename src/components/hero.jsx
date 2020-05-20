@@ -5,37 +5,41 @@ import { getAllMediaQueries as allMq } from '../helpers/mediaQueryHelpers';
 
 const Hero = ({ text }) => (
   <section
-    css={allMq({
-      textAlign: 'center',
-      marginTop: [
-        '30%',
-        '',
-        '',
-        '20%',
-        '20%',
-        '15%',
-        '15%',
-        '10%',
-        '',
-        '10%',
-        '',
-        '',
-      ],
-    })}
+    css={css`
+      text-align: center;
+      margin-top: 11rem;
+      margin-bottom: 5rem;
+      ${[mq('phoneSmall')]} {
+        max-width: 90%;
+      };
+      ${[mq('phonePortrait')]} {
+        max-width: 75%;
+      };
+      ${[mq('phoneLandscape')]} {
+        max-width: 75%;
+      };
+      ${[mq('tabletPortrait')]} {
+        max-width: 75%;
+      };
+      ${[mq('desktopSmall')]} {
+        max-width: 60%;
+      };
+    `}
   >
     <h1
       css={{
         borderBottom: '0.5rem solid #ff729f',
-        borderRadius: '20px',
+        borderRadius: '10px',
         display: 'inline-block',
-        paddingBottom: '0.75rem',
+        padding: '0 1rem 0.75rem 1rem',
         textAlign: 'center',
         [mq('phoneSmall')]: {
-          fontSize: '2rem',
+          fontSize: '2.4rem',
+          fontWeight: 500
         },
-        [mq('tabletPortrait')]: {
-          fontSize: '3rem',
-        },
+        [mq('desktopSmall')]: {
+          fontSize: '4.5rem'
+        }
       }}
     >
       {text}
