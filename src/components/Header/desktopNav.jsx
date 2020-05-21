@@ -30,6 +30,7 @@ const NavItem = styled(`li`)`
 const DesktopNav = () => (
   <ul
     css={{
+      margin: 0,
       listStyle: 'none',
       display: 'none',
       [mq('tabletLandscape')]: {
