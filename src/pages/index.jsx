@@ -20,7 +20,7 @@ export default () => {
             width: '75%',
           },
           [mq('desktopSmall')]: {
-            maxWidth: '50%'
+            maxWidth: '90%'
           }
         }}
       >

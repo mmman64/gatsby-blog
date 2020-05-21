@@ -22,7 +22,7 @@ const Hero = ({ text }) => (
         max-width: 75%;
       };
       ${[mq('desktopSmall')]} {
-        max-width: 60%;
+        max-width: 90%;
       };
     `}
   >
@@ -34,11 +34,15 @@ const Hero = ({ text }) => (
         padding: '0 1rem 0.75rem 1rem',
         textAlign: 'center',
         [mq('phoneSmall')]: {
-          fontSize: '2.4rem',
+          fontSize: '3rem',
+          fontWeight: 500
+        },
+        [mq('laptopMedium')]: {
+          fontSize: '4rem',
           fontWeight: 500
         },
         [mq('desktopSmall')]: {
-          fontSize: '4.5rem'
+          fontSize: '5rem'
         }
       }}
     >

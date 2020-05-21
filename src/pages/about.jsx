@@ -32,8 +32,8 @@ const AboutAsideText = styled.p`
   font-weight: 700;
   font-style: italic;
   line-height: 1.8rem;
-  word-spacing: 5px;
-  letter-spacing: 2px;
+  word-spacing: 2px;
+  letter-spacing: 1.5px;
   ${[mq('laptopMedium')]} {
     font-size: 1.2rem;
   }
@@ -41,9 +41,9 @@ const AboutAsideText = styled.p`
 
 const CloudProjectsList = styled.ul`
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 1.2px;
   padding-left: 0.5rem;
   margin: 1rem;
   line-height: 1.8rem;
@@ -83,7 +83,6 @@ const About = () => {
       <Hero text="About" />
       <section
         css={{
-          width: '80%',
           margin: '10rem auto',
           [mq('laptopMedium')]: {
             transform: 'perspective(300px) rotateY(-2deg)',

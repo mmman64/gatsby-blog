@@ -33,15 +33,6 @@ const Layout = ({ children }) => {
             ${mq('phonePortrait')} {
               font-size: 1rem
             };
-            ${mq('tabletPortrait')} {
-              font-size: 1.2rem
-            };
-            ${mq('tabletLandscape')} {
-              font-size: 1.3rem
-            };
-            ${mq('laptopSmall')} {
-              font-size: 1.5rem
-            };
           }
 
           *,
@@ -65,7 +56,8 @@ const Layout = ({ children }) => {
 
           .siteContent {
             flex: 1;
-            margin: 0;
+            margin: 0 auto;
+            max-width: 1200px;
           }
 
           section {

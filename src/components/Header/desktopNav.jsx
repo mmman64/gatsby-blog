@@ -32,7 +32,7 @@ const DesktopNav = () => (
     css={{
       listStyle: 'none',
       display: 'none',
-      [mq('laptopSmall')]: {
+      [mq('tabletLandscape')]: {
         display: 'flex',
       },
     }}
