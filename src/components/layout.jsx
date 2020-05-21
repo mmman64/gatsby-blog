@@ -109,7 +109,7 @@ const Layout = ({ children }) => {
             font-size: 1.2rem;
             text-align: left;
             white-space: pre-wrap;
-            width: 95%;
+            width: 100%;
             margin: 2rem auto;
           }
 

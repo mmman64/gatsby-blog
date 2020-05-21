@@ -34,8 +34,10 @@ At this time, I still suspected incorrect authoring as the source of my problem,
 
 When you initialise git within a directory (git init) you create a .git directory which contains a config file (.gitconfig). For now, we're concerned with the git user name and email values, which can be set by using the following commands:
 
-1. `git config user.name <name>`
-2. `git config user.email <email>`
+```
+git config user.name <name>
+git config user.email <email>
+```
 
 This is now set at a project level and should override your global and system-level configurations.
 
@@ -79,23 +81,23 @@ So now we have the SSH keys loaded but we still need a way to ensure that the co
 ```
 # General
 Host *
-    AddKeysToAgent yes
-    UseKeychain yes
-    IdentityFile ~/.ssh/id_rsa
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
 # Override for your main account
-Host github.com-your_personal_github_user_name
-    AddKeysToAgent yes
-    HostName github.com
-    User git
-    IdentityFile ~/.ssh/id_rsa_your_personal_github_username
-    IdentitiesOnly yes
+Host github.com-github_username1
+  AddKeysToAgent yes
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_github_username1
+  IdentitiesOnly yes
 # Override for your alternative account
-Host github.com-your_alternative_github_user_name
-    AddKeysToAgent yes
-    HostName github.com
-    User git
-    IdentityFile ~/.ssh/id_rsa_your_alternative_github_username
-    IdentitiesOnly yes
+Host github.com-github_username2
+  AddKeysToAgent yes
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_github_username2
+  IdentitiesOnly yes
 ```
 
 Here we have a general configuration set up for any particular SSH key you may have (non GitHub related) and then two others below that associate the correct SSH key to the appropriate GitHub account.
@@ -106,13 +108,12 @@ You'll notice that the value we have for host is not an actual URL. A typical SS
 
 What we have here is the domain followed by a flag that we use to distinguish between the two accounts. Now we need to tell git how it should interpret these flags! In the global **.gitconfig** file paste the following in (edit as required):
 
+```
+[url “-github_username1:github_username1/”]
+  pushInsteadOf = :github_user_name1
 
-
-`[url “-your_personal_github_user_name:your_personal_github_user_name/”]
-    pushInsteadOf = :your_personal_github_user_name`
-
-`[url “-your_alternative_github_user_name:your_alternative_github_user_name/”]
-    pushInsteadOf = :your_alternative_github_user_name`
-
+[url “-github_username2:github_username2/”]
+  pushInsteadOf = :github_user_name2
+```
 
 You should now be able to freely interface with both GitHub accounts without permission issues. Again, just ensure you're authoring your commits correctly!
