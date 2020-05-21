@@ -16,7 +16,7 @@ This works fine as there is a strong separation between the two and conflicts ar
 
 I found that I was always being denied permission to pull from / push to a repository and this led me down a path where I ended up learning a bit more about git configurations and how the SSH agent on OSX behaves. I tend to classify these problems under the term **TTI** (sounds nasty doesn't it?) short for **_Tedious Technical Issue_**. It is the kind of problem that hinders development and productivity, and is often as elusive as it is inconsistent, possbily hard to replicate and always very, very frustrating!
 
-#### _A little bit about SSH and GitHub_
+### _A little bit about SSH and GitHub_
 
 To avoid having to type our credentials every time we interface with our GitHub account, we can instead generate an SSH key on our computer which we then save on our account. Then, whenever we try to push something up to our repository, for example, GitHub will check the SSH key we send against the one stored on our account and if they match, the operation can be completed. If not, we’ll be presented with a validation error instead, which will complain about permissions and deny you access.
 
@@ -28,9 +28,9 @@ So my first issue was that I had generated an SSH key for my main account and wa
 
 At this time, I still suspected incorrect authoring as the source of my problem, which was only half true. There are three levels of scope you need to consider when configuring git.
 
-1. System-level scope
-2. Global-level scope
-3. Project-level scope
+* System-level scope
+* Global-level scope
+* Project-level scope
 
 When you initialise git within a directory (git init) you create a .git directory which contains a config file (.gitconfig). For now, we're concerned with the git user name and email values, which can be set by using the following commands:
 
@@ -41,13 +41,13 @@ This is now set at a project level and should override your global and system-le
 
 The global config can be found in **~/.gitconfig** and the system level config is found in **/etc/gitconfig**, the difference being - global-level dictates the config for the user in all projects and the system-level dictates the same for all users across all projects. You can set these and override them at a project-level as you prefer.
 
-#### **Warning!**
+### **Warning!**
 
 _Make sure to double-check your authoring configurations when starting a new project! It is easy to forget this and allow the global git configuration to set the wrong user name and email values!_
 
 I was mistaken in thinking that this would be enough for GitHub to somehow identify me and use the correct SSH key to grant me access.
 
-#### _Enter the forgetful SSH agent:_
+### _Enter the forgetful SSH agent:_
 
 Why forgetful? Saving the decrypted keys to disk is considered a security vulnerability, so the SSH agent (responsible for handling your SSH keys) only holds them temporarily in memory so that they do not persist between reboots, for example.
 
@@ -60,6 +60,7 @@ e.g. `ssh-add id_rsa_github_username`
 Alternatively, you can create an alias in your ~/.bashrc (or ~/.zshrc) file that might look something like this:
 
 `alias mygitssh='eval ssh-agent -s && ssh-add ~/.ssh/id_rsa_mygitkey'`
+
 `alias altgitssh='eval ssh-agent -s && ssh-add ~/.ssh/id_rsa_altgitkey'`
 
 Now you can just call your aliases as required. I also found this script, probably on Stack Overflow, that is supposed to automate this when a new shell session is started but it didn't seem to work for me and anyway, I prefer to explicitly call it as of when I need it. I'll include it below in case you might find it useful:
@@ -71,7 +72,7 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
 fi
 ```
 
-#### _SSH Config:_
+### _SSH Config:_
 
 So now we have the SSH keys loaded but we still need a way to ensure that the correct key is sent where appropriate. I finally came across a promising solution. Let's take a look at a configuration file together. Open up (or create if it doesn't already exist) **~/.ssh/config** and paste the following in (edit as required):
 
@@ -96,18 +97,22 @@ Host github.com-your_alternative_github_user_name
     IdentityFile ~/.ssh/id_rsa_your_alternative_github_username
     IdentitiesOnly yes
 ```
+
 Here we have a general configuration set up for any particular SSH key you may have (non GitHub related) and then two others below that associate the correct SSH key to the appropriate GitHub account.
 
-You'll notice that the value we have for host is not an actual URL. A typical SSH URL would look something like: `git@github.com:user_name/repo_name.git`.
+You'll notice that the value we have for host is not an actual URL. A typical SSH URL would look something like:
+
+`git@github.com:user_name/repo_name.git`.
 
 What we have here is the domain followed by a flag that we use to distinguish between the two accounts. Now we need to tell git how it should interpret these flags! In the global **.gitconfig** file paste the following in (edit as required):
 
-```
-[url “-your_personal_github_user_name:your_personal_github_user_name/”]
-    pushInsteadOf = :your_personal_github_user_name
-[url “-your_alternative_github_user_name:your_alternative_github_user_name/”]
-    pushInsteadOf = :your_alternative_github_user_name
-```
+
+
+`[url “-your_personal_github_user_name:your_personal_github_user_name/”]
+    pushInsteadOf = :your_personal_github_user_name`
+
+`[url “-your_alternative_github_user_name:your_alternative_github_user_name/”]
+    pushInsteadOf = :your_alternative_github_user_name`
+
+
 You should now be able to freely interface with both GitHub accounts without permission issues. Again, just ensure you're authoring your commits correctly!
-
-

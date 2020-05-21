@@ -28,11 +28,11 @@ const Layout = ({ children }) => {
             height: 100vh;
             width: 100vw;
             ${mq('phoneSmall')} {
-              font-size: 0.6rem
-            };
+              font-size: 0.6rem;
+            }
             ${mq('phonePortrait')} {
-              font-size: 1rem
-            };
+              font-size: 1rem;
+            }
           }
 
           *,
@@ -65,6 +65,16 @@ const Layout = ({ children }) => {
             margin: 1rem auto;
           }
 
+          h2,
+          h3 {
+            display: inline-block;
+            border-bottom: 5px solid #ff729f;
+            background-color: #fbc532;
+            border-radius: 5px;
+            padding: 0 1rem;
+            margin: 2rem 0 1.2rem 0;
+          }
+
           h1 {
             font-size: 4rem;
             font-weight: 300;
@@ -73,24 +83,34 @@ const Layout = ({ children }) => {
           h2 {
             font-size: 3rem;
             font-weight: 400;
-            display: inline-block;
-            border-bottom: 5px solid #ff729f;
-            background-color: #fbc532;
-            border-radius: 5px;
-            padding: 0 1rem;
-            margin-top: 5rem;
           }
 
           h3 {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 400;
             font-style: italic;
           }
 
           p {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 400;
             margin: 0 0 1.25rem 0;
+          }
+
+          ul,
+          ol {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0 2rem 2rem 2rem;
+          }
+
+          pre,
+          code {
+            font-size: 1.2rem;
+            text-align: left;
+            white-space: pre-wrap;
+            width: 95%;
+            margin: 2rem auto;
           }
 
           a {
@@ -111,7 +131,10 @@ const Layout = ({ children }) => {
       {/* Helmet lets you modify the head of a React document */}
       <Helmet>
         <html lang="en" />
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>"></link>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>"
+        ></link>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>

@@ -14,6 +14,7 @@ const ArticleMeta = ({ tags, date }) => {
           css={css`
             display: block;
             font-weight: 400;
+            color: #ff729f;
           `}
         >
           Posted: <time date={date}>{date}</time>

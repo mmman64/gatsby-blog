@@ -21,9 +21,12 @@ const PostTemplate = ({ data: { mdx: post } }) => (
   <Layout>
     <h1
       css={{
+        fontSize: '3.5rem',
+        borderBottom: '0.5rem solid #ff729f',
         marginTop: '10rem',
         marginBottom: '5rem',
         textAlign: 'center',
+        paddingBottom: '2rem'
       }}
     >
       {post.frontmatter.title}
@@ -31,7 +34,7 @@ const PostTemplate = ({ data: { mdx: post } }) => (
 
     <div
       css={{
-        width: '75%',
+        width: '95%',
         maxWidth: '1200px',
         margin: '0 auto',
         textAlign: 'left',
@@ -41,7 +44,7 @@ const PostTemplate = ({ data: { mdx: post } }) => (
       <MDXRenderer>{post.body}</MDXRenderer>
       <p
         css={css`
-          font-size: 0.8rem;
+          font-size: 1rem;
           color: #ff729f;
           text-align: right;
           margin: 0;

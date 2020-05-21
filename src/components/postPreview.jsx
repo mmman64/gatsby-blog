@@ -2,7 +2,6 @@ import React from 'react';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import ArticleMeta from './articleMeta';
-import { getMediaQuery as mq } from '../helpers/mediaQueryHelpers';
 
 
 const PostPreview = ({ post }) => (
@@ -23,6 +22,9 @@ const PostPreview = ({ post }) => (
           css={css`
             margin-bottom: 0.5rem;
             font-weight: 700;
+            background-color: transparent;
+            border-bottom: none;
+            padding: 0;
           `}
         >
           {post.title}
