@@ -11,7 +11,7 @@ const FooterEmoji = styled(`span`)`
 const Footer = () => (
   <footer
     css={css`
-      padding: 1rem 0;
+      padding: 2rem 0;
       background-color: #2f3640;
       color: #fff;
       font-weight: 700;

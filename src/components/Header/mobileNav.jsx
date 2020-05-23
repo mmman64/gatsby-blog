@@ -42,7 +42,7 @@ const MobileNav = ({ menuOpen }) => (
       z-index: 1;
     `}
   >
-    <ul>
+    <ul css={css`list-style: none; margin: 0;`}>
       <div>
         <NavItem>
           <Link to="/" css={linkStyle} activeClassName="current-page">
