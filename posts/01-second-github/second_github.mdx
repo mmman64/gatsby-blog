@@ -117,3 +117,5 @@ What we have here is the domain followed by a flag that we use to distinguish be
 ```
 
 You should now be able to freely interface with both GitHub accounts without permission issues. Again, just ensure you're authoring your commits correctly!
+
+N.B. Sometimes you may run into an issue where the wrong SSH key is being used. Typically this will manifest in an error message on push or clone telling you to make sure the repository exists and that you hav the correct access rights. In this case just run the `ssh-add -l` command to see the keys currently handled by the SSH agent, then ssh-add -D to delete them all. Now when you re-add the key you need and retry your operation it should work!

@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { getMediaQuery as mq } from '../../helpers/mediaQueryHelpers';
-import NavLinks from './desktopNav';
+import DesktopNav from './desktopNav';
 import MobileNav from './mobileNav';
 
 const SiteHeader = styled(`header`)`
@@ -66,7 +66,7 @@ const Header = () => {
             )}
           </svg>
         </MenuToggle>
-        <NavLinks />
+        <DesktopNav />
       </SiteHeader>
       <div
         css={css`
