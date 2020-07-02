@@ -5,9 +5,19 @@ module.exports = {
       'A place to write something interesting to me...and maybe to you.',
   },
   plugins: [
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-react-helmet',
-    'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: 'UA-171555270-1',
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: true,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+      },
+    },
     {
       resolve: 'gatsby-plugin-sharp',
     },
@@ -57,5 +67,8 @@ module.exports = {
         analyzerMode: 'static',
       },
     },
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
   ],
 };
