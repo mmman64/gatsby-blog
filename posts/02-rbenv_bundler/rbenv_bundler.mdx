@@ -1,0 +1,18 @@
+---
+title: Configuring rbenv
+slug: rbenv-configuration
+date: 2020-07-15
+---
+
+This is a quick step-by-step guide to getting rbenv (and rvm alternative) up and running...
+
+1. Ensure Xcode Command Line Tools are installed: `xcode-select --install`
+1. Make sure Homebrew is up to date: `brew update` and install rbenv: `brew install rbenv`
+1. If you're using ZSH just paste in: `eval "$(rbenv init -)"` at the end of your ~/.zshrc file
+1. If you're using Bash then paste the above at the end of your ~/.bash_profile with this on the line above: `export PATH="$HOME/.rbenv/bin:$PATH"`
+1. Install the version of Ruby you'd like: `rbenv install <version number>` use `rbenv install -l` to see all available versions
+1. To see installed versions: `rbenv versions` and to see the current version `rbenv version`
+1. You can set the Ruby version at a local or global level or for a shell session: `rbenv <local/global/shell> <version number>`
+1. To undo this: `rbenv <local/global/shell> --unset`
+1. Run this command to ensure you've done everything correctly so far: `curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash`
+1. Use Bundler to manage your gems - install with: `gem install bundler` and run `bundle install` for installing gems from a Gemfile
