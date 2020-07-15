@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { getMediaQuery as mq } from '../../helpers/mediaQueryHelpers';
 import DesktopNav from './desktopNav';
 import MobileNav from './mobileNav';
+import MenuToggleIcon from './menuToggleIcon';
 
 const SiteHeader = styled(`header`)`
   display: flex;
@@ -46,25 +47,7 @@ const Header = () => {
             },
           }}
         >
-          <svg
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            css={{
-              height: '2rem',
-              width: '2rem',
-              paddingTop: '0.15rem',
-            }}
-          >
-            {menuOpen ? (
-              <path d="M6 18L18 6M6 6l12 12"></path>
-            ) : (
-              <path d="M4 6h16M4 12h16M4 18h16"></path>
-            )}
-          </svg>
+          <MenuToggleIcon menuOpen={menuOpen} />
         </MenuToggle>
         <DesktopNav />
       </SiteHeader>

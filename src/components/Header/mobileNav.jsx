@@ -33,16 +33,24 @@ const HR = styled(`hr`)`
 
 const MobileNav = ({ menuOpen }) => (
   <nav
-    css={css`
-      width: 100%;
-      position: absolute;
-      opacity: 0.95;
-      background-color: black;
-      visibility: ${menuOpen ? 'visible' : 'hidden'};
-      z-index: 1;
-    `}
+    css={{
+      width: '100%',
+      position: 'absolute',
+      opacity: 0.95,
+      backgroundColor: 'black',
+      visibility: `${menuOpen ? 'visible' : 'hidden'}`,
+      zIndex: 1,
+      [mq('tabletLandscape')]: {
+        display: 'none',
+      },
+    }}
   >
-    <ul css={css`list-style: none; margin: 0;`}>
+    <ul
+      css={css`
+        list-style: none;
+        margin: 0;
+      `}
+    >
       <div>
         <NavItem>
           <Link to="/" css={linkStyle} activeClassName="current-page">
